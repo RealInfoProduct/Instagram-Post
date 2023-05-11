@@ -1,1 +1,29 @@
+<div class="container">
+    <div class="row">
+            <div class="upload-file">
+                <div class="browse-file">
+                    <div class="upload-text">
+                        <i class="bi bi-cloud-arrow-up"></i><br>
+                        <span>Upload your Instagram image</span>
+                    </div>
+                    <input type="file" (change)="handleFileInput($event.target)" formControlName="file"
+                        class="file-selection" multiple/>
+                </div>
+            </div>
+    </div>
+
+    <div class="row image-select">
+        <ng-container *ngFor="let img of imageCollection; let i = index">
+            <div class="image-width">
+                <i class="bi bi-x-circle" (click)="removeImage(i)"></i>
+                <img width="100%" class="image" [src]="img">
+            </div>
+        </ng-container>
+    </div>
+
+    <div class="submit-btn">
+        <button type="button" class="btn btn-primary" *ngIf="imageCollection?.length" (click)="onSubmit()">Submit</button>
+    </div>
+</div>
+
 <router-outlet></router-outlet>
